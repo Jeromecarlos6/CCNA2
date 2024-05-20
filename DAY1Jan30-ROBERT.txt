@@ -202,12 +202,12 @@ ephone-dn 7
 ephone-dn 8
   number 1188	
 Ephone 1
-  Mac-address 11111111.11111111.11111111
+  Mac-address ccd8.c1fb.0817
   type 8945
   button 1:1 2:3 3:2 4:4
   restart
 Ephone 2
-  Mac-address 11111111.11111111.11111111
+  Mac-address ccd8.c1fb.09ff
   type 8945
   button 1:5 2:6 3:7 4:8
   restart  
@@ -303,7 +303,7 @@ dial-peer voice 82 Voip
 @@@@@@
 !@@@EDGE ROUTE CONFIG
 config t
-   hostname EDGE12
+   hostname EDGE11
    enable secret pass
    service password-encryption
    no logging console
@@ -318,15 +318,15 @@ config t
       exec-timeout 0 0
    Int Gi 0/0/0
      description INSIDE
-     ip add 10.12.12.1 255.255.255.0
+     ip add 10.11.11.1 255.255.255.0
 	 no shutdown
    Int Gi 0/0/1
      description OUTSIDE
-	 ip add 200.0.0.12 255.255.255.0
+	 ip add 200.0.0.11 255.255.255.0
 	 no shutdown
    Int Loopback 0
      description VIRTUALIP
-	 ip add 12.0.0.1 255.255.255.255
+	 ip add 11.0.0.1 255.255.255.255
  end
 
  
@@ -368,8 +368,8 @@ end
 
 !How to Static Route windows Server:
 cmd
-route  add   10.0.0.0   mask   255.0.0.0    10.m.1.4
-route  add  200.0.0.0   mask  255.255.255.0   10.m.1.4
+route  add   10.0.0.0   mask   255.0.0.0    10.11.1.4
+route  add  200.0.0.0   mask  255.255.255.0   10.11.1.4
 
 ********************************************
 
