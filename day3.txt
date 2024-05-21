@@ -56,7 +56,7 @@ int e0/0
 p1: creating staic routes on p1 for vlan 200 abd vlan 20
 config t
 ip route 192.168.1.128 255.255.255.224 10.2.1.1 1
-no ip route 192.168.1.130 255.255.255.224 10.2.1.2 
+ip route 192.168.1.130 255.255.255.224 10.2.1.2 
 do sh ip route
 p2:
 config t
