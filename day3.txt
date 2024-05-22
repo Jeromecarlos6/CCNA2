@@ -5,7 +5,25 @@ r1 to r4: ospf 1:
 config t
  no router ospf 1
  do sh ip protocols
-
+#### give IP AD to s1 and s2
+@@S1
+config t
+int e1/0
+no shut
+ip add 192.168.1.133 255.255.255.224
+do bp
+ip route 0.0.0.0 0.0.0.0 192.168.1.129 1
+ip route 0.0.0.0 0.0.0.0 192.168.1.130 2
+do show ip route static
+@@S2
+config t
+int e1/0
+no shut
+ip add 10.2.2.133 255.255.255.0
+do bp
+ip route 0.0.0.0 0.0.0.0 10.2.2.2 1
+ip route 0.0.0.0 0.0.0.0 10.2.2.1 2
+do show ip route static
 R4
 config t
  no router eigrp 100
@@ -57,8 +75,8 @@ int e1/0
  switchport access vlan 10
 A1: creating default route and secondary default route:
 config t
-ip route 0.0.0.0 0.0.0.0 192.168.1.129 2
 ip route 0.0.0.0 0.0.0.0 192.168.1.130 1
+ip route 0.0.0.0 0.0.0.0 192.168.1.129 2
 do show ip route static
 p1:
 config t
@@ -68,7 +86,7 @@ int e0/0
 p1: creating staic routes on p1 for vlan 200 abd vlan 20
 config t
 ip route 192.168.1.128 255.255.255.224 10.2.1.1 1
-ip route 192.168.1.130 255.255.255.224 10.2.1.2 
+ip route 192.168.1.130 255.255.255.225 10.2.1.2 
 do sh ip route
 p2:
 config t
