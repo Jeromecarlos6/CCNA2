@@ -122,7 +122,7 @@ indicator no.3: Kislap every 1/2 seconds
 TASK6: HOW TO GET FIRED IMMEDIATELY!
 @baba:
 config t
- spanning-tree vlan 1
+NO spanning-tree vlan 1
 end
 @taas:
 config t
@@ -216,10 +216,10 @@ end
 #sh int status err-disabled 
 TAAS: bounce/UP/down
 config t
-int fa 0/1
+int fa 0/3
  shut
  no shut
-int fa 0/5
+int fa 0/7
  shut
  no shut
 end
@@ -339,7 +339,7 @@ config t
 hostname PLDTITO
 Track 1 Int gi 0/1 line-protocol
 Int vlan 1
-standby 1 ip 10.__.1.6
+standby 1 ip 10.11.1.6
 standby 1 preempt
 standby 1 Priority 150
 standby 1 Track 1 decrement 60
@@ -348,7 +348,7 @@ standby 1 Track 1 decrement 60
 config t
 hostname GLOBE
 Int vlan 1
-standby 1 ip 10.__.1.6
+standby 1 ip 10.11.1.6
 standby 1 preempt
 standby 1 Priority 100
 do sh standby
@@ -421,7 +421,9 @@ int e0/3
 
 D1 = root primary
 d2 = root secondary
-
+config t
+spanning-tree vlan 1-100 root primary
+do show spanning-tree vlan 1
 homelab: VTP:
 d1/d2:
 config t
